@@ -1,4 +1,3 @@
-# Instagram
 # Project 4 - Instagram with Parse
 
 Instagram is a photo sharing app using Parse as its backend.
