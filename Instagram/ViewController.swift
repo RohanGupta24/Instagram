@@ -13,9 +13,10 @@ class ViewController: UIViewController {
 
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
+    
     @IBAction func loginButton(_ sender: Any) {
         PFUser.logInWithUsername(inBackground: usernameTextField.text!, password: passwordTextField.text!) { (user: PFUser?, error: Error?) in
-            if user != nil {
+            if user != nil{
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             }
             else {
@@ -28,6 +29,7 @@ class ViewController: UIViewController {
             }
         }
     }
+    
     @IBAction func signUpButton(_ sender: Any) {
         let newUser = PFUser()
         

@@ -7,9 +7,24 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
 class TableViewCell: UITableViewCell {
-
+    @IBOutlet var usernameLabel: UILabel!
+    @IBOutlet var captionLabel: UILabel!
+    @IBOutlet var photoView: PFImageView!
+    @IBOutlet var dateLabel: UILabel!
+    
+    var post: PFObject! {
+        didSet {
+            self.usernameLabel.text = post["author"] as? String
+            self.dateLabel.text = "\(post.createdAt!)"
+            self.photoView.file = post["media"] as? PFFile
+            self.captionLabel.text = post["caption"] as? String
+            self.photoView.loadInBackground()
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
